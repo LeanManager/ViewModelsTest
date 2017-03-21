@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	         x:Class="ZwabyAdminApp.ArithmeticPage"
+	         xmlns:local="clr-namespace:ZwabyAdminApp;assembly=ZwabyAdminApp"
+	         BackgroundColor="Green"
+	         Padding="10,0,10,30"
+             Title="Multiplication Page">
+	
+	 <ContentPage.Resources>
+        <ResourceDictionary>
+			
+          <local:SimpleMultiplierViewModel x:Key="viewModel"
+			                               Multiplicand="0.5"
+			                               Multiplier="0.5"/>
+			
+          <Style TargetType="Label">
+            <Setter Property="FontSize" Value="Large" />
+		    <Setter Property="TextColor" Value="White" />	
+			<Setter Property="FontAttributes" Value="Bold" />	
+          </Style>
+			
+        </ResourceDictionary>
+     </ContentPage.Resources>
+
+      <StackLayout BindingContext="{StaticResource viewModel}"
+		           Spacing="60"
+		           VerticalOptions="Center">
+
+		<!-- /////////////////////////////////////////////////////////////////////////// -->
+		
+         <StackLayout>
+
+         <!-- The default binding mode of the Value property of the Slider is TwoWay.
+			Changes in the Value property of each Slider cause changes to the properties of the ViewModel. -->
+			
+            <Slider Value="{Binding Multiplicand}" />
+			
+            <Slider Value="{Binding Multiplier}" />
+			
+         </StackLayout>
+
+		<!-- /////////////////////////////////////////////////////////////////////////// -->
+		
+         <StackLayout Orientation="Horizontal"
+                      Spacing="0"
+                      HorizontalOptions="Center">
+			
+             <Label Text="{Binding Multiplicand, 
+			              StringFormat='{0:F3}'}" />
+			
+             <Label Text="{Binding Multiplier, 
+			              StringFormat=' x {0:F3}'}" />
+			
+             <Label Text="{Binding Product, 
+			              StringFormat=' = {0:F3}'}" />
+			
+         </StackLayout>
+
+		<!-- /////////////////////////////////////////////////////////////////////////// -->
+
+		<Button Text="Another ViewModel"
+			    TextColor="White"
+			    FontSize="Large"
+			    FontAttributes="Bold"
+		        BackgroundColor="Fuchsia"
+		        Clicked="Handle_Clicked"/>
+		
+     </StackLayout>
+	
+</ContentPage>

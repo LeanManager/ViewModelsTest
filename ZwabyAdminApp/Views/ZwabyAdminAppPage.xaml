@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	         xmlns:local="clr-namespace:ZwabyAdminApp" 
+	         x:Class="ZwabyAdminApp.ZwabyAdminAppPage"
+	         Title="Coming Soon"
+	         BackgroundColor="Green">
+	<ScrollView>
+	<StackLayout VerticalOptions="Center" 
+	             HorizontalOptions="Center"
+		         Spacing="30">
+	<Label Text="Zwaby Admin App Coming Soon!"
+		   TextColor="White"
+		   FontAttributes="Bold"/>
+	<Label Text="Developers at work xD!"
+		   TextColor="White"
+		   FontAttributes="Bold"
+		   HorizontalTextAlignment="Center"/>
+		<Button Text="Click Me" 
+			    FontSize="Large"
+		        BackgroundColor="White"
+		        Clicked="Handle_Clicked"/>
+		</StackLayout>
+		</ScrollView>
+</ContentPage>

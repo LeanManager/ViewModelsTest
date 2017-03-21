@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	         xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:local="clr-namespace:ZwabyAdminApp;assembly=ZwabyAdminApp"
+             x:Class="ZwabyAdminApp.ClockTestPage"
+	         BackgroundColor="Green"
+	         Padding="10,0,10,0"
+             Title="Clock Page">
+
+	 <ContentPage.Resources>
+       <ResourceDictionary>
+			
+       <local:DayTimeViewModel x:Key="viewModel" />
+			
+			 <Style TargetType="Label">
+				<Setter Property="TextColor" Value="White" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+             </Style>
+			
+       </ResourceDictionary>
+     </ContentPage.Resources>
+
+	<ScrollView>
+		
+	 <StackLayout VerticalOptions="Center"
+		          Spacing="20">
+			
+        <Label Text="{Binding Source={x:Static sys:DateTime.Now},
+                     StringFormat='This program started on {0:F}'}" />
+
+			
+		<Label Text="But now..." />
+			
+
+		   <StackLayout BindingContext="{StaticResource viewModel}"
+				        Spacing="20">
+
+		     <Label Text="{Binding DateTime,
+		                  StringFormat='The time is {0:T}'}"/>
+           
+
+		     <Label Text="{Binding DateTime,
+		                  Path=DateTime.Hour,
+                          StringFormat='The hour is {0:HH}'}" />
+			
+
+		     <Label Text="{Binding DateTime,
+		                  Path=DateTime.Minute,
+                          StringFormat='The minute is {0:mm}'}" />
+		
+		
+             <Label Text="{Binding DateTime,
+		                  Path=DateTime.Second,
+                          StringFormat='The second is {0:ss}'}" />
+
+			
+		     <Label Text="{Binding DateTime,
+		                  Path=DateTime.Millisecond,
+                          StringFormat='The milliseconds are {0:fff}'}" />
+		
+		   </StackLayout>
+
+			<Button Text="Another ViewModel"
+			        TextColor="White"
+				    FontSize="Large"
+			        FontAttributes="Bold"
+			        BackgroundColor="Fuchsia"
+			        Clicked="Handle_Clicked"/>
+			
+		</StackLayout>
+		
+	</ScrollView>
+	
+</ContentPage>
